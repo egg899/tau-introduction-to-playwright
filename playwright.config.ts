@@ -5,14 +5,14 @@ import baseEnvUrl from './utils/environmentBaseUrl';
  * Read environment variables from file.
  * https://github.com/motdotla/dotenv
  */
-require('dotenv').config();
-
+//require('dotenv').config();
+import dotenv from 'dotenv';
 /**
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  // testDir: './tests',
-
+  testDir: './tests-examples',
+  //testDir:'./new-test',
   /* Run tests in files in parallel */
   fullyParallel: true,
 
@@ -21,17 +21,19 @@ export default defineConfig({
 
   /* Retry on CI only */
   // retries: process.env.CI ? 2 : 0,
-  retries: 2,
+  retries: 0,
 
   /* Opt out of parallel tests on CI. */
   workers: process.env.CI ? 1 : undefined,
+ 
 
   /* Reporter to use. See https://playwright.dev/docs/test-reporters */
   reporter: 'html',
   // reporter: [['html', { open: 'always' }]], //always, never and on-failure (default).
   // reporter: [['html', { outputFolder: 'my-report' }]], // report is written into the playwright-report folder in the current working directory. override it using the PLAYWRIGHT_HTML_REPORT
   // reporter: 'dot',
-  // reporter: 'list',
+  //reporter: 'list',
+  //reporter: 'junit',
   /**
     reporter: [
       ['list'],
@@ -49,6 +51,7 @@ export default defineConfig({
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
+   
     screenshot: 'only-on-failure',
     // headless: false,
     // ignoreHTTPSErrors: true,
@@ -126,13 +129,27 @@ export default defineConfig({
          baseURL: process.env.CI
           ? baseEnvUrl.ci.prefix + process.env.GITHUB_REF_NAME + baseEnvUrl.ci.suffix //https://dev-myapp-chapter-2.mydomain.com
           : baseEnvUrl.staging.home,
-      },
+      }
+
+      
       /**
        * GitHub variables: https://docs.github.com/en/actions/learn-github-actions/variables
        * GitLab variables: https://docs.gitlab.com/ee/ci/variables/predefined_variables.html#predefined-variables-reference
        */
     },
 
+   
+
+
+      {
+        name: 'mobile',
+        use:{
+          browserName: 'chromium',
+          viewport: {width: 375, height: 667}
+        }
+
+
+      }
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
