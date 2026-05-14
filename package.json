@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test:e2e": "npx playwright test tests/",
+    "test:e2e:ex": "npx playwright test example.spec.ts",
     "test:e2e:all": "npx playwright test tests --project=all-browsers-and-tests",
     "test:e2e:ci": "CI=1 npx playwright test --project=ci --shard=$CI_NODE_INDEX/$CI_NODE_TOTAL",
     "test:e2e:dev": "npx playwright test tests-examples/ --project=chromium --headed --retries=0 --reporter=line",
@@ -12,7 +13,8 @@
     "test:e2e:non-smoke": "npx playwright test tests-examples/ --grep-invert @smoke --project=firefox",
     "test:visual:acme": "npx playwright test example-applitools.spec.ts --project=chromium",
     "test:visual:playwright": "npx playwright test example3.spec.ts --project=all-browsers-and-tests",
-    "test:mobile": "npx playwright test --project=mobile"
+    "test:mobile": "npx playwright test --project=mobile",
+    "test:e2e:new": "npx playwright test new-test/example2.spec.ts --project=chromium"
   },
   "keywords": [],
   "author": "",
@@ -20,7 +22,7 @@
   "devDependencies": {
     "@applitools/eyes-playwright": "^1.17.0",
     "@playwright/test": "^1.59.1",
-    "@types/node": "^25.6.0",
-    "dotenv": "^16.0.3"
+    "@types/node": "^25.6.2",
+    "dotenv": "^16.6.1"
   }
 }

@@ -11,7 +11,8 @@ import dotenv from 'dotenv';
  * See https://playwright.dev/docs/test-configuration.
  */
 export default defineConfig({
-  testDir: './tests-examples',
+  //testDir: './tests',
+  // testDir: './tests-examples',
   //testDir:'./new-test',
   /* Run tests in files in parallel */
   fullyParallel: true,
@@ -141,15 +142,15 @@ export default defineConfig({
    
 
 
-      {
-        name: 'mobile',
-        use:{
-          browserName: 'chromium',
-          viewport: {width: 375, height: 667}
-        }
+      // {
+      //   name: 'mobile',
+      //   use:{
+      //     browserName: 'chromium',
+      //     viewport: {width: 375, height: 667}
+      //   }
 
 
-      }
+      // }
     /* Test against mobile viewports. */
     // {
     //   name: 'Mobile Chrome',
